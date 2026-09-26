@@ -1,8 +1,28 @@
 ---
-permalink: /about/
 title: "About"
+permalink: /about/
+layout: single
+author_profile: true
 ---
 
-Tempor velit sint sunt ipsum tempor enim ad qui ullamco. Est dolore anim ad velit duis dolore minim sunt aliquip amet commodo labore. Ut eu pariatur aute ea aute excepteur laborum. Esse ea esse excepteur minim mollit qui cillum excepteur ex dolore magna. Labore deserunt fugiat incididunt incididunt sint ea. Consequat dolore aute laboris quis proident quis non et est consectetur ex eiusmod sit culpa.
+I'm a PhD candidate in Computational Science and Engineering at the
+School of Mathematics and Computing, Yonsei University, working on
+survival analysis.
 
-Cupidatat ea do et in excepteur in. Ad nostrud ut est esse eu duis ea sunt eiusmod. Aliquip tempor veniam sint elit fugiat. Velit incididunt laboris amet incididunt labore dolore irure velit excepteur commodo deserunt laborum. Consectetur eu fugiat veniam veniam Lorem labore magna eiusmod. Ea occaecat reprehenderit pariatur consectetur minim labore ut aliquip.
+My research develops statistical methods for time-to-event data,
+with a focus on quantifying uncertainty honestly rather than
+reporting a single best guess. I work mostly in a Bayesian framework,
+using P-splines and penalized regression to model flexible hazard
+and survival functions.
+
+Current interests:
+
+- Uncertainty quantification for survival prediction in cancer
+- Updating predictive survival model
+- SDE-based survival model
+
+Before starting my PhD, I worked in biostatistics for 10 years at
+National Cancer Center, Korea.
+
+This site collects my publications, talks, and occasional notes on
+methods I find myself explaining more than once.
