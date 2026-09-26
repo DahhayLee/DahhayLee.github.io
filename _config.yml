@@ -60,7 +60,8 @@ plugins:
 author:
   name   : "Dahhay Lee"
   avatar : "/assets/images/profilepic.jpg"
-  bio    : "Biostatistician."
+  bio    : "PhD candidate, Yonsei University · Survival analysis & Bayesian methods"
+  location : "Seoul, Korea"
   links:
     - label: "Website"
       icon: "fas fa-fw fa-link"
