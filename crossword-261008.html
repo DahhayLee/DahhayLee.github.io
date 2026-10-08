@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>한글 미니 십자말풀이 2026. 10. 08</title>
+<meta name="description" content="2026. 10. 08 by Jack. 4×4 한글 미니 십자말풀이, 칸을 누르고 바로 풀어 보세요.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://dahhaylee.github.io/crossword-261008.html">
+<meta property="og:title" content="한글 미니 십자말풀이 2026. 10. 08">
+<meta property="og:description" content="by Jack @jackughhh · 4×4 한글 미니 십자말풀이">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:creator" content="@jackughhh">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🧩</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Gothic+A1:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#eef1f4; --sheet:#ffffff; --ink:#22252b; --muted:#5f6670; --rule:#22252b;
+  --block:#22252b; --hl:#ffe45c; --hl-cell:#ffc93c; --wrong:#d33f49; --wrong-bg:#fbe3e5;
+  --reveal:#2f5fd0; --ok:#2a7a4b; --btn:#e2e6eb; --btn-hover:#d4d9e0; --focus:#2f5fd0;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#16181c; --sheet:#22252b; --ink:#eceef1; --muted:#a2a9b3; --rule:#5a616b;
+    --block:#0d0e10; --hl:#5b5120; --hl-cell:#8a7422; --wrong:#ff7a82; --wrong-bg:#4a2328;
+    --reveal:#8fb0ff; --ok:#7fd3a0; --btn:#2c3038; --btn-hover:#373c46; --focus:#8fb0ff;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#16181c; --sheet:#22252b; --ink:#eceef1; --muted:#a2a9b3; --rule:#5a616b;
+  --block:#0d0e10; --hl:#5b5120; --hl-cell:#8a7422; --wrong:#ff7a82; --wrong-bg:#4a2328;
+  --reveal:#8fb0ff; --ok:#7fd3a0; --btn:#2c3038; --btn-hover:#373c46; --focus:#8fb0ff;
+}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--paper);color:var(--ink);
+  font-family:"Gothic A1","Apple SD Gothic Neo","Malgun Gothic","Noto Sans KR",sans-serif;
+  -webkit-text-size-adjust:100%}
+.wrap{max-width:900px;margin:0 auto;padding:28px 18px 48px}
+header{margin-bottom:22px}
+h1{font-family:"Gowun Batang","AppleMyungjo","Batang",serif;font-weight:700;
+  font-size:clamp(28px,7vw,40px);line-height:1.15;margin:0;letter-spacing:-0.01em}
+.sub{font-family:"Gowun Batang","AppleMyungjo","Batang",serif;font-size:clamp(17px,4.2vw,21px);
+  margin:6px 0 0;color:var(--ink)}
+.meta{display:flex;gap:14px;align-items:center;margin-top:12px;color:var(--muted);font-size:14px}
+.timer{font-variant-numeric:tabular-nums}
+
+.layout{display:grid;gap:26px}
+@media (min-width:760px){ .layout{grid-template-columns:minmax(300px,380px) 1fr;align-items:start} }
+
+.board{position:relative;width:100%;max-width:380px;aspect-ratio:1/1;display:grid;
+  grid-template-columns:repeat(4,1fr);grid-template-rows:repeat(4,1fr);
+  border:2px solid var(--rule);background:var(--rule);gap:1px;user-select:none;-webkit-user-select:none}
+.cell{position:relative;background:var(--sheet);display:flex;align-items:center;justify-content:center;
+  cursor:pointer;font-family:"Gowun Batang","AppleMyungjo","Batang",serif;font-weight:700;
+  font-size:clamp(30px,10vw,44px);color:var(--ink);transition:background-color .12s}
+.cell.block{background:var(--block);cursor:default}
+.cell .num{position:absolute;top:4px;left:6px;font-family:"Gothic A1",sans-serif;font-weight:500;
+  font-size:13px;line-height:1;color:var(--ink)}
+.cell.inword{background:var(--hl)}
+.cell.sel{background:var(--hl-cell)}
+.cell.wrong .ch{color:var(--wrong)}
+.cell.wrong{box-shadow:inset 0 0 0 3px var(--wrong)}
+.cell.revealed .ch{color:var(--reveal)}
+.cell.revealed::after{content:"";position:absolute;right:0;top:0;border-style:solid;
+  border-width:0 12px 12px 0;border-color:transparent var(--reveal) transparent transparent}
+.board.done .cell:not(.block){background:var(--sheet)}
+.cell.composing .ch{text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:7px}
+#ans{position:absolute;opacity:0;border:0;padding:0;margin:0;font-size:16px;background:transparent;
+  color:transparent;caret-color:transparent;pointer-events:none;outline:none}
+
+.entry{margin-top:16px;max-width:380px}
+.cluebar{display:flex;align-items:stretch;gap:6px;background:var(--sheet);border:1px solid var(--rule)}
+.cluebar button{border:0;background:transparent;color:var(--ink);font-size:22px;width:40px;cursor:pointer;flex:none}
+.cluebar button:hover{background:var(--btn)}
+.cluetext{flex:1;padding:10px 4px;font-size:15px;line-height:1.5;min-height:3.4em;display:flex;align-items:center}
+.cluetext b{white-space:nowrap;margin-right:8px}
+.hint{font-size:13px;color:var(--muted);margin:8px 0 0;line-height:1.5}
+
+.actions{display:flex;flex-wrap:wrap;gap:6px;margin-top:16px;max-width:380px}
+.actions button{font:inherit;font-size:14px;padding:9px 12px;border:0;background:var(--btn);color:var(--ink);
+  cursor:pointer;border-radius:0}
+.actions button:hover{background:var(--btn-hover)}
+.actions button.armed{background:var(--wrong);color:#fff}
+
+.status{margin-top:14px;max-width:380px;font-size:15px;line-height:1.55;min-height:1.5em}
+.status.ok{color:var(--ok);font-weight:700}
+.status.bad{color:var(--wrong)}
+
+.clues h2{font-family:"Gowun Batang","AppleMyungjo","Batang",serif;font-size:22px;margin:0 0 8px}
+.clues section+section{margin-top:22px}
+.clues ol{list-style:none;margin:0;padding:0}
+.clues li{display:flex;gap:10px;padding:8px 10px;font-size:15px;line-height:1.55;cursor:pointer;
+  border-left:3px solid transparent}
+.clues li .n{font-weight:700;flex:none;min-width:1.2em}
+.clues li:hover{background:var(--btn)}
+.clues li.active{background:var(--hl);border-left-color:var(--ink)}
+.clues li.filled .t{color:var(--muted)}
+button:focus-visible,input:focus-visible,.clues li:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
+.share{margin-top:10px;max-width:380px}
+.share textarea{display:block;width:100%;font:inherit;font-size:15px;line-height:1.45;padding:10px 12px;border:1px solid var(--rule);
+  background:var(--sheet);color:var(--ink);resize:none;border-radius:0}
+.share button{margin-top:6px;font:inherit;font-weight:700;font-size:15px;padding:10px 18px;border:0;background:var(--ink);
+  color:var(--sheet);cursor:pointer;border-radius:0}
+@media (prefers-reduced-motion: reduce){ .cell{transition:none} }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>한글 미니 십자말풀이</h1>
+    <p class="sub">2026. 10. 08 by Jack</p>
+    <div class="meta"><span class="timer" id="timer" aria-label="걸린 시간">00:00</span></div>
+  </header>
+
+  <div class="layout">
+    <div>
+      <div class="board" id="board" role="grid" aria-label="십자말풀이 판">
+        <input id="ans" type="text" autocomplete="off" autocorrect="off" autocapitalize="off"
+               spellcheck="false" enterkeyhint="next" aria-label="선택한 칸에 입력">
+      </div>
+
+      <div class="entry">
+        <div class="cluebar">
+          <button id="prev" aria-label="이전 문제">‹</button>
+          <div class="cluetext" id="cluetext" aria-live="polite"></div>
+          <button id="next" aria-label="다음 문제">›</button>
+        </div>
+        <p class="hint">칸을 누르고 바로 입력하세요. 한 글자를 넣으면 다음 칸으로, 한 단어를 다 채우면 다음 문제로 넘어가요. 같은 칸을 한 번 더 누르면 가로/세로가 바뀝니다.</p>
+      </div>
+
+      <div class="actions">
+        <button id="check">맞는지 확인</button>
+        <button id="revealCell">이 칸 공개</button>
+        <button id="revealAll">정답 공개</button>
+        <button id="reset">처음부터</button>
+      </div>
+      <div class="status" id="status" role="status"></div>
+      <div class="share" id="share" hidden>
+        <textarea id="shareText" readonly rows="9" aria-label="공유할 결과"></textarea>
+        <button id="copy">결과 복사</button>
+      </div>
+    </div>
+
+    <div class="clues">
+      <section><h2>가로</h2><ol id="across"></ol></section>
+      <section><h2>세로</h2><ol id="down"></ol></section>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  const ENC = "eyJnIjogW1si66CIIiwgIuyngCIsICLrjZgiLCAi7Yq4Il0sIFsi7JyEIiwgIuyEsSIsICLsoIQiLCAi7J20Il0sIFsi6riwIiwgIuuvuCIsICLsp4AiLCAi67mEIl0sIFtudWxsLCBudWxsLCAi7ZiVIiwgIuyVhCJdXSwgImFsdCI6IHsiMSwzIjogWyLrpqwiXX19";
+  const SOL = JSON.parse(new TextDecoder().decode(Uint8Array.from(atob(ENC), c => c.charCodeAt(0))));
+  const N = 4;
+  const G = SOL.g;
+  const ok = (r,c,v) => v === G[r][c] || ((SOL.alt[r+","+c]||[]).includes(v));
+
+  const CLUES = {
+    across:[
+      {n:1,r:0,c:0,len:4,t:"2026년 개봉 잭 크레거 감독 작 공포 영화 OOOO 이블"},
+      {n:2,r:1,c:0,len:4,t:"암세포가 발생한 부위에서 아주 가까운 곳으로 퍼지는 것"},
+      {n:3,r:2,c:0,len:4,t:"NC 다이노스 No. 44 선수의 별명"},
+      {n:4,r:3,c:2,len:2,t:"“오빠야”의 남자 버전"}
+    ],
+    down:[
+      {n:1,r:0,c:0,len:3,t:"2026년 개봉 아드리안 키아렐라 감독 작 퀴어 공포 영화"},
+      {n:2,r:0,c:1,len:3,t:"백치미의 반대"},
+      {n:3,r:0,c:2,len:4,t:"밥은 해먹어도 만남을 추구하면 되는지 안 되는지는 알 수 없는 지형"},
+      {n:4,r:0,c:3,len:4,t:"가로 3번은 이 선수의 이것이기도 하다."}
+    ]
+  };
+  const ORDER = [...CLUES.across.map(w=>({...w,d:"across"})), ...CLUES.down.map(w=>({...w,d:"down"}))];
+  const NUMS = {"0,0":1,"0,1":2,"0,2":3,"0,3":4,"1,0":2,"2,0":3,"3,2":4};
+  const KEY = "xw-hangul-mini-2026-10-08-jack";
+  const HANGUL = /[가-힣ㄱ-ㅎㅏ-ㅣ]/;
+  const SYL = /^[가-힣]$/;
+
+  let entry = G.map(row => row.map(() => ""));
+  let mark = G.map(row => row.map(() => ""));   // "", "wrong", "revealed"
+  let sel = {r:0,c:0}, dir = "across";
+  let elapsed = 0, startedAt = null, finished = false, tick = null;
+  // 입력 버퍼: 숨은 input의 내용을 선택한 칸부터 차례로 칸에 비춘다.
+  // 한글 조합 중에 input 값을 건드리지 않기 위해, 버퍼는 확정 시점에만 비운다.
+  let buf = null, composing = false, touched = false;
+
+  const $ = id => document.getElementById(id);
+  const board = $("board"), ans = $("ans"), status = $("status");
+  const cellsEl = [];
+
+  const isOpen = (r,c) => r>=0 && c>=0 && r<N && c<N && G[r][c] !== null;
+  const cellsOf = w => Array.from({length:w.len}, (_,i) => w.d==="across" ? {r:w.r,c:w.c+i} : {r:w.r+i,c:w.c});
+  const wordFor = (r,c,d) => ORDER.find(w => w.d===d && cellsOf(w).some(x => x.r===r && x.c===c));
+  const cur = () => wordFor(sel.r, sel.c, dir) || wordFor(sel.r, sel.c, dir==="across"?"down":"across");
+  const same = (a,b) => a.r===b.r && a.c===b.c;
+
+  // ---------- persistence ----------
+  function save(){
+    try{ localStorage.setItem(KEY, JSON.stringify({entry,mark,elapsed:currentElapsed(),finished})); }catch(e){}
+  }
+  function load(){
+    try{
+      const s = JSON.parse(localStorage.getItem(KEY) || "null");
+      if(s && s.entry){ entry=s.entry; mark=s.mark||mark; elapsed=s.elapsed||0; finished=!!s.finished; }
+    }catch(e){}
+  }
+
+  // ---------- timer ----------
+  const currentElapsed = () => elapsed + (startedAt ? Date.now()-startedAt : 0);
+  function fmt(ms){ const s=Math.floor(ms/1000); return String(Math.floor(s/60)).padStart(2,"0")+":"+String(s%60).padStart(2,"0"); }
+  function startTimer(){
+    if(startedAt || finished) return;
+    startedAt = Date.now();
+    tick = setInterval(() => { $("timer").textContent = fmt(currentElapsed()); }, 500);
+  }
+  function stopTimer(){
+    if(startedAt){ elapsed = currentElapsed(); startedAt = null; }
+    clearInterval(tick); $("timer").textContent = fmt(elapsed);
+  }
+
+  // ---------- input buffer ----------
+  const bufChars = () => [...ans.value].filter(ch => HANGUL.test(ch));
+
+  function beginBuffer(){
+    const w = cur(), cs = cellsOf(w);
+    const i = Math.max(0, cs.findIndex(x => same(x, sel)));
+    const targets = cs.slice(i).filter(x => mark[x.r][x.c] !== "revealed");
+    buf = { w, targets, snap: targets.map(x => [entry[x.r][x.c], mark[x.r][x.c]]), compIdx:-1 };
+  }
+
+  function applyBuffer(){
+    if(!buf) return;
+    const chars = bufChars(), T = buf.targets;
+    T.forEach((x,i) => {
+      if(i < chars.length){ entry[x.r][x.c] = chars[i]; mark[x.r][x.c] = ""; }
+      else { entry[x.r][x.c] = buf.snap[i][0]; mark[x.r][x.c] = buf.snap[i][1]; }
+    });
+    buf.compIdx = (composing && chars.length && chars.length <= T.length) ? chars.length-1 : -1;
+    if(T.length){
+      const k = composing ? chars.length-1 : chars.length;
+      sel = T[Math.max(0, Math.min(T.length-1, k))];
+      dir = buf.w.d;
+    }
+  }
+
+  function finalize(){
+    if(!buf){ if(!composing) ans.value = ""; return; }
+    const chars = bufChars(), T = buf.targets, w = buf.w;
+    let last = -1;
+    T.forEach((x,i) => {
+      if(i < chars.length){ entry[x.r][x.c] = SYL.test(chars[i]) ? chars[i] : ""; mark[x.r][x.c] = ""; last = i; }
+    });
+    buf = null; ans.value = "";
+    if(last >= 0){
+      dir = w.d;
+      if(last === T.length-1){
+        const cs = cellsOf(w);
+        const emptyHere = cs.find(x => !entry[x.r][x.c]);
+        if(emptyHere) sel = emptyHere;
+        else { const nx = nextIncomplete(w); sel = nx ? (dir = nx.w.d, nx.cell) : T[last]; }
+      } else sel = T[last+1];
+    }
+    save(); render(); evaluate();
+  }
+
+  // 조합 중이면 blur로 IME를 먼저 확정시킨 뒤 버퍼를 비운다.
+  function commit(){
+    const hadFocus = document.activeElement === ans;
+    if(composing) ans.blur();
+    finalize();
+    return hadFocus;
+  }
+  const keepFocus = () => ans.focus({preventScroll:true});
+
+  function onInput(){
+    if(finished){ if(!composing) ans.value = ""; else ans.blur(); return; }
+    touched = true;
+    if(!buf) beginBuffer();
+    applyBuffer();
+    if(bufChars().length) startTimer();
+    render(); save();
+    if(/\s/.test(ans.value)) setTimeout(() => { const f = commit(); if(f) keepFocus(); }, 0);
+    else if(allFilled() && allRight()) setTimeout(() => { if(buf) commit(); }, 0);
+  }
+
+  // ---------- build ----------
+  for(let r=0;r<N;r++){
+    cellsEl.push([]);
+    for(let c=0;c<N;c++){
+      const d = document.createElement("div");
+      d.className = "cell" + (isOpen(r,c) ? "" : " block");
+      d.setAttribute("role","gridcell");
+      if(isOpen(r,c)){
+        const num = NUMS[r+","+c];
+        if(num){ const s=document.createElement("span"); s.className="num"; s.textContent=num; d.appendChild(s); }
+        const ch=document.createElement("span"); ch.className="ch"; d.appendChild(ch);
+        d.addEventListener("mousedown", e => e.preventDefault());   // 키보드가 내려가지 않게
+        d.addEventListener("click", () => {
+          const tappedSelected = touched && same(sel, {r,c});
+          touched = true;
+          commit();
+          sel = {r,c};
+          const other = dir==="across" ? "down" : "across";
+          if(tappedSelected){ if(wordFor(r,c,other)) dir = other; }
+          else if(!wordFor(r,c,dir)) dir = other;
+          render(); keepFocus();
+        });
+      }
+      board.insertBefore(d, ans); cellsEl[r].push(d);
+    }
+  }
+  for(const d of ["across","down"]){
+    const ol = $(d);
+    CLUES[d].forEach(w => {
+      const li = document.createElement("li");
+      li.tabIndex = 0; li.dataset.key = d+w.n;
+      li.innerHTML = '<span class="n"></span><span class="t"></span>';
+      li.querySelector(".n").textContent = w.n;
+      li.querySelector(".t").textContent = w.t;
+      const go = () => {
+        commit(); dir = d;
+        const cs = cellsOf(w);
+        sel = cs.find(x => !entry[x.r][x.c]) || cs[0];
+        render(); keepFocus();
+      };
+      li.addEventListener("mousedown", e => e.preventDefault());
+      li.addEventListener("click", go);
+      li.addEventListener("keydown", e => { if(e.key==="Enter"||e.key===" "){ e.preventDefault(); go(); } });
+      ol.appendChild(li);
+    });
+  }
+
+  // ---------- render ----------
+  function render(){
+    const w = cur(); dir = w.d;
+    const inW = new Set(cellsOf(w).map(x=>x.r+","+x.c));
+    const compCell = buf && buf.compIdx >= 0 ? buf.targets[buf.compIdx] : null;
+    for(let r=0;r<N;r++) for(let c=0;c<N;c++){
+      if(!isOpen(r,c)) continue;
+      const el = cellsEl[r][c];
+      el.querySelector(".ch").textContent = entry[r][c];
+      el.classList.toggle("inword", inW.has(r+","+c));
+      el.classList.toggle("sel", sel.r===r && sel.c===c);
+      el.classList.toggle("wrong", mark[r][c]==="wrong");
+      el.classList.toggle("revealed", mark[r][c]==="revealed");
+      el.classList.toggle("composing", !!compCell && compCell.r===r && compCell.c===c);
+      el.setAttribute("aria-label", (NUMS[r+","+c]?NUMS[r+","+c]+"번 ":"") + (entry[r][c]||"빈 칸"));
+    }
+    const sc = cellsEl[sel.r][sel.c];
+    ans.style.left = sc.offsetLeft+"px"; ans.style.top = sc.offsetTop+"px";
+    ans.style.width = sc.offsetWidth+"px"; ans.style.height = sc.offsetHeight+"px";
+
+    $("cluetext").innerHTML = "";
+    const b = document.createElement("b"); b.textContent = (w.d==="across"?"가로 ":"세로 ")+w.n;
+    const t = document.createElement("span"); t.textContent = w.t;
+    $("cluetext").append(b,t);
+    document.querySelectorAll(".clues li").forEach(li => {
+      const ww = ORDER.find(x=>x.d+x.n===li.dataset.key);
+      li.classList.toggle("active", ww===w);
+      li.classList.toggle("filled", cellsOf(ww).every(x=>entry[x.r][x.c]));
+    });
+    board.classList.toggle("done", finished);
+    $("timer").textContent = fmt(currentElapsed());
+  }
+
+  function setStatus(msg, cls){ status.textContent = msg; status.className = "status" + (cls?" "+cls:""); }
+  function allFilled(){ for(let r=0;r<N;r++)for(let c=0;c<N;c++) if(isOpen(r,c)&&!entry[r][c]) return false; return true; }
+  function allRight(){ for(let r=0;r<N;r++)for(let c=0;c<N;c++) if(isOpen(r,c)&&!ok(r,c,entry[r][c])) return false; return true; }
+  function revealedCount(){ let n=0; for(let r=0;r<N;r++)for(let c=0;c<N;c++) if(mark[r][c]==="revealed") n++; return n; }
+
+  function evaluate(){
+    if(!allFilled()){ if(status.classList.contains("bad")) setStatus(""); return; }
+    if(allRight()){
+      finished = true; stopTimer();
+      const rv = revealedCount();
+      setStatus("다 풀었어요! " + fmt(elapsed) + (rv ? " (공개한 칸 " + rv + "개)" : ""), "ok");
+      save(); render(); showShare();
+    } else {
+      setStatus("칸은 다 채웠지만 틀린 글자가 있어요. ‘맞는지 확인’을 눌러 보세요.", "bad");
+    }
+  }
+
+  function showShare(){
+    const rv = revealedCount();
+    const rows = G.map((row,r) => row.map((v,c) => v===null ? "⬛" : (mark[r][c]==="revealed" ? "🟦" : "🟩")).join(""));
+    $("shareText").value = ["한글 미니 십자말풀이 2026. 10. 08 by Jack @jackughhh",
+      "⏱ " + fmt(elapsed) + (rv ? " (공개 " + rv + "칸)" : " (힌트 없이)"), "", ...rows, "", "https://dahhaylee.github.io/crossword-261008.html"].join("\n");
+    $("share").hidden = false;
+  }
+
+  function nextIncomplete(from){
+    const i = ORDER.indexOf(from);
+    for(let k=1;k<=ORDER.length;k++){
+      const w = ORDER[(i+k)%ORDER.length];
+      const empty = cellsOf(w).find(x=>!entry[x.r][x.c]);
+      if(empty) return {w, cell:empty};
+    }
+    return null;
+  }
+  function moveWithin(step){
+    const cs = cellsOf(cur());
+    const i = cs.findIndex(x=>same(x,sel));
+    sel = cs[Math.min(cs.length-1, Math.max(0, i+step))];
+  }
+  function cycle(step){
+    const i = ORDER.indexOf(cur());
+    const w = ORDER[(i+step+ORDER.length)%ORDER.length];
+    const cs = cellsOf(w);
+    dir = w.d; sel = cs.find(x => !entry[x.r][x.c]) || cs[0]; render();
+  }
+
+  // ---------- events ----------
+  ans.addEventListener("compositionstart", () => { composing = true; if(!buf && !finished) beginBuffer(); });
+  ans.addEventListener("compositionend", () => {
+    composing = false;
+    if(finished){ ans.value = ""; return; }
+    applyBuffer(); render(); save();
+    // 글자가 확정되었고 단어 끝까지 찼으면 다음 문제로
+    setTimeout(() => {
+      if(composing || !buf) return;
+      const ch = bufChars();
+      if(ch.length >= buf.targets.length && SYL.test(ch[ch.length-1])) finalize();
+    }, 0);
+  });
+  ans.addEventListener("input", onInput);
+  ans.addEventListener("blur", () => { composing = false; finalize(); });
+
+  ans.addEventListener("keydown", e => {
+    if(e.key==="Enter"){ e.preventDefault(); setTimeout(() => { commit(); keepFocus(); }, 0); return; }
+    if(e.isComposing || e.keyCode===229) return;
+    if(e.key==="Backspace" && !ans.value){
+      e.preventDefault(); buf = null;
+      if(finished) return;
+      const {r,c} = sel;
+      if(mark[r][c]!=="revealed" && entry[r][c]){ entry[r][c]=""; mark[r][c]=""; }
+      else { moveWithin(-1); const s=sel; if(mark[s.r][s.c]!=="revealed"){ entry[s.r][s.c]=""; mark[s.r][s.c]=""; } }
+      save(); render(); evaluate();
+    } else if(e.key===" "){
+      e.preventDefault();
+      if(ans.value) finalize(); else { moveWithin(1); render(); }
+    } else if(e.key.startsWith("Arrow")){
+      e.preventDefault();
+      if(ans.value || buf) finalize();
+      const dr = e.key==="ArrowDown"?1:e.key==="ArrowUp"?-1:0;
+      const dc = e.key==="ArrowRight"?1:e.key==="ArrowLeft"?-1:0;
+      const want = dr ? "down" : "across";
+      if(dir!==want && wordFor(sel.r,sel.c,want)){ dir=want; render(); return; }
+      let r=sel.r+dr, c=sel.c+dc;
+      while(r>=0&&c>=0&&r<N&&c<N&&!isOpen(r,c)){ r+=dr; c+=dc; }
+      if(isOpen(r,c)){ sel={r,c}; if(!wordFor(r,c,dir)) dir=dir==="across"?"down":"across"; render(); }
+    } else if(e.key==="Tab"){
+      e.preventDefault(); if(ans.value || buf) finalize(); cycle(e.shiftKey?-1:1);
+    }
+  });
+
+  for(const [id,step] of [["prev",-1],["next",1]]){
+    $(id).addEventListener("mousedown", e => e.preventDefault());
+    $(id).addEventListener("click", () => { const f = commit(); cycle(step); if(f) keepFocus(); });
+  }
+
+  $("check").addEventListener("click", () => {
+    let wrong=0, empty=0;
+    for(let r=0;r<N;r++)for(let c=0;c<N;c++){
+      if(!isOpen(r,c)) continue;
+      if(!entry[r][c]) { empty++; continue; }
+      if(!ok(r,c,entry[r][c])){ mark[r][c]="wrong"; wrong++; }
+    }
+    save(); render();
+    if(wrong) setStatus("틀린 칸 " + wrong + "개를 빨간색으로 표시했어요." + (empty ? " 빈 칸은 " + empty + "개 남았어요." : ""), "bad");
+    else if(empty) setStatus("지금까지 채운 칸은 모두 맞아요. 빈 칸 " + empty + "개 남았어요.");
+    else evaluate();
+  });
+
+  $("revealCell").addEventListener("click", () => {
+    if(finished) return;
+    const {r,c} = sel;
+    entry[r][c] = G[r][c]; mark[r][c] = "revealed";
+    startTimer(); save(); render(); evaluate();
+  });
+
+  $("copy").addEventListener("click", async () => {
+    const ta = $("shareText"), btn = $("copy");
+    let done = false;
+    try{ await navigator.clipboard.writeText(ta.value); done = true; }catch(e){}
+    if(!done){ try{ ta.focus(); ta.select(); done = document.execCommand("copy"); }catch(e){} }
+    btn.textContent = done ? "복사했어요" : "위 글을 길게 눌러 직접 복사하세요";
+    setTimeout(() => { btn.textContent = "결과 복사"; }, 2500);
+  });
+
+  function armed(btn, label, action){
+    let timer = null;
+    btn.addEventListener("click", () => {
+      if(btn.classList.contains("armed")){
+        clearTimeout(timer); btn.classList.remove("armed"); btn.textContent = label; action();
+      } else {
+        btn.classList.add("armed"); btn.textContent = "한 번 더 누르면 실행";
+        timer = setTimeout(() => { btn.classList.remove("armed"); btn.textContent = label; }, 3000);
+      }
+    });
+  }
+  armed($("revealAll"), "정답 공개", () => {
+    for(let r=0;r<N;r++)for(let c=0;c<N;c++){
+      if(isOpen(r,c) && !ok(r,c,entry[r][c])){ entry[r][c]=G[r][c]; mark[r][c]="revealed"; }
+    }
+    finished = true; stopTimer(); save(); render();
+    setStatus("정답을 공개했어요. 파란 글자가 공개된 칸입니다.");
+  });
+  armed($("reset"), "처음부터", () => {
+    entry = G.map(row=>row.map(()=> "")); mark = G.map(row=>row.map(()=> ""));
+    elapsed = 0; startedAt = null; finished = false; clearInterval(tick); buf = null;
+    sel = {r:0,c:0}; dir = "across"; $("share").hidden = true; save(); render(); setStatus("");
+  });
+
+  window.addEventListener("resize", render);
+
+  // ---------- init ----------
+  load(); render();
+  if(finished){ evaluate(); if(!allRight()) setStatus("정답을 공개한 퍼즐이에요. ‘처음부터’로 다시 풀 수 있어요."); }
+  else if(elapsed>0 || entry.some(row=>row.some(Boolean))) startTimer();
+  if(window.matchMedia && matchMedia("(pointer: fine)").matches) keepFocus();
+})();
+</script>
+</body>
+</html>
