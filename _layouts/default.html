@@ -27,7 +27,7 @@
     {% if maxy >= cutoff %}
       {% for p in pubs %}{% if p.year == maxy %}{% assign latest = p %}{% break %}{% endif %}{% endfor %}
       {% if latest.doi %}{% assign latest_link = "https://doi.org/" | append: latest.doi %}{% else %}{% assign latest_link = latest.url %}{% endif %}
-  <p class="latest"><a href="{{ latest_link }}"><em>{{ latest.short_title | default: latest.title | split: ": " | first }}</em></a> out now in {{ latest.journal }}</p>
+  <p class="latest"><a href="{{ latest_link }}" title="{{latest.title | escape}}">{{ latest.short_title | default: latest.title | split: ": " | first }}</a> out now in <em>{{ latest.journal }}</em></p>
     {% endif %}
   {% endif %}
 
