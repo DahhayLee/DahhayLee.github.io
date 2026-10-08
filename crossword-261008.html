@@ -395,7 +395,7 @@ button:focus-visible,input:focus-visible,.clues li:focus-visible{outline:2px sol
   function showShare(){
     const rv = revealedCount();
     const rows = G.map((row,r) => row.map((v,c) => v===null ? "⬛" : (mark[r][c]==="revealed" ? "🟦" : "🟩")).join(""));
-    $("shareText").value = ["한글 미니 십자말풀이 2026. 10. 08 by Dahhay Lee @jackughhh",
+    $("shareText").value = ["한글 미니 십자말풀이 2026. 10. 08 by Dahhay Lee",
       "⏱ " + fmt(elapsed) + (rv ? " (공개 " + rv + "칸)" : " (힌트 없이)"), "", ...rows, "", "https://dahhaylee.github.io/crossword-261008.html"].join("\n");
     $("share").hidden = false;
     const ta = $("shareText"); ta.style.height = "auto"; ta.style.height = (ta.scrollHeight + 2) + "px";
