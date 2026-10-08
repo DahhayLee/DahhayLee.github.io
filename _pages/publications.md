@@ -3,7 +3,7 @@ title: "Publications"
 permalink: /publications/
 ---
 
-{% if site.data.publications %}
+{% if site.data.publications and site.data.publications.size > 0 %}
 {% assign pubs = site.data.publications %}
 {% assign years = pubs | map: "year" | uniq | sort | reverse %}
 {% for y in years %}

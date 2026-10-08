@@ -1,0 +1,55 @@
+name: Update publications
+
+on:
+  push:
+    branches: [master]
+    paths:
+      - _data/publication_dois.yml
+      - .github/scripts/build_publications.py
+  schedule:
+    - cron: "0 21 * * 0"   # 매주 월요일 06:00 (한국 시간). 온라인 선공개 논문의 권호/페이지 갱신용
+  workflow_dispatch:        # Actions 탭에서 수동 실행
+
+permissions:
+  contents: write
+  pages: write
+
+concurrency:
+  group: publications
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - run: pip install pyyaml
+
+      - run: python .github/scripts/build_publications.py
+
+      - name: Commit if changed
+        id: commit
+        run: |
+          if [ -z "$(git status --porcelain -- _data/publications.yml)" ]; then
+            echo "변경 없음"
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add _data/publications.yml
+          git commit -m "Update publications from DOIs"
+          git push
+          echo "changed=true" >> "$GITHUB_OUTPUT"
+
+      # 봇이 올린 커밋은 사이트 재빌드가 안 걸리는 경우가 있어서 명시적으로 요청
+      - name: Request Pages build
+        if: steps.commit.outputs.changed == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh api -X POST "repos/${{ github.repository }}/pages/builds" || echo "::warning::Pages 빌드 요청 실패. 사이트 반영이 늦으면 아무 파일이나 커밋해 보세요."
