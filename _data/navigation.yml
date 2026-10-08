@@ -1,10 +1,8 @@
 main:
   - title: "Posts"
     url: /posts/
-  - title: "Categories"
-    url: /categories/
-  - title: "Tags"
-    url: /tags/
+  - title: "Publications"
+    url: /publications/
   - title: "십자말풀이"
     url: /crossword/
   - title: "About"
