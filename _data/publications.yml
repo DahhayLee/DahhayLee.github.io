@@ -1,3 +1,9 @@
 # 자동 생성 파일이에요. 직접 고치지 말고 _data/publication_dois.yml 을 수정하세요.
 # (여기를 고치면 다음 실행 때 덮어써져요.)
-[]
+- title: 'Uncertainty quantification framework for AI-based survival models: Application to lung cancer prognosis in older adults for informed decision-making'
+  authors: Dahhay Lee, Thi-Ngoc Tran, Jonghyeok Jeong, Hoejun Kwon, Hyunsoon Cho
+  journal: Artificial Intelligence in Medicine
+  year: 2026
+  volume: '180'
+  pages: '103457'
+  doi: 10.1016/j.artmed.2026.103457
