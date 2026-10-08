@@ -5,7 +5,7 @@ main:
     url: /categories/
   - title: "Tags"
     url: /tags/
-  - title: "Crossword"
-    url: /crossword-261008.html
+  - title: "십자말풀이"
+    url: /crossword/
   - title: "About"
     url: /about/
