@@ -5,5 +5,7 @@ main:
     url: /categories/
   - title: "Tags"
     url: /tags/
+  - title: "Crossword"
+    url: /crossword-261008.html
   - title: "About"
     url: /about/
