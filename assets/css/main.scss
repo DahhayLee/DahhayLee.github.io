@@ -9,6 +9,7 @@
   --muted: #74716b;   /* 날짜, 사이드바 제목 */
   --sub: #555350;     /* 글 제목 */
   --link: #6b6420;    /* 링크 올리브 */
+  --nav:#2c5d8a; /* 메뉴 */
   --rule: #d6d4ce;
   --mono: "Courier Prime", "Nanum Gothic Coding", "Courier New", monospace;
   --sans: "IBM Plex Sans", "Nanum Gothic Coding", sans-serif;
@@ -50,7 +51,7 @@ img { max-width: 100%; height: auto; }
 .latest a { color: var(--ink); text-decoration: none; }
 .latest a:hover { text-decoration: underline; }
 .main-nav { display: flex; flex-direction: column; gap: 0.35rem; font-size: 19px; font-weight: 700; }
-.main-nav a { color: var(--ink); text-decoration: none; }
+.main-nav a { color: var(--nav); text-decoration: none; }
 .main-nav a:hover { text-decoration: underline; }
 
 /* 본문 + 사이드바 */
