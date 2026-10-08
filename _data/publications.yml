@@ -7,3 +7,16 @@
   volume: '180'
   pages: '103457'
   doi: 10.1016/j.artmed.2026.103457
+- title: Deep Learning-Based Dynamic Risk Prediction of Venous Thromboembolism for Patients With Ovarian Cancer in Real-World Settings From Electronic Health Records
+  authors: Dahhay Lee, Seongyoon Kim, Sanghee Lee, Hak Jin Kim, Ji Hyun Kim, Myong Cheol Lim, Hyunsoon Cho
+  journal: JCO Clinical Cancer Informatics
+  year: 2024
+  pages: e2300192
+  doi: 10.1200/CCI.23.00192
+- title: 'Cause-specific mortality rate of ovarian cancer in the presence of competing risks of death: a nationwide population-based cohort study'
+  authors: Seung-Hyuk Shim, Myong Cheol Lim, Dahhay Lee, Young-Joo Won, Hyeong In Ha, Ha Kyun Chang, Hyunsoon Cho
+  journal: Journal of Gynecologic Oncology
+  year: 2022
+  volume: 33(1)
+  pages: e5
+  doi: 10.3802/jgo.2022.33.e5
