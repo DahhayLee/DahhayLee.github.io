@@ -1,0 +1,17 @@
+---
+layout: default
+---
+<article class="entry">
+  <h1 class="page-title">{{ page.title }}</h1>
+  <div class="body">
+{{ content }}
+  {% assign months = site.posts | group_by_exp: "p", "p.date | date: '%Y-%m'" %}
+  {% for m in months %}
+    <h2 id="{{ m.name }}">{{ m.items.first.date | date: "%B %Y" }}</h2>
+    <ul class="post-list">
+    {% for p in m.items %}<li><span class="d">{{ p.date | date: "%m.%d" }}</span> <a href="{{ p.link | default: p.url | relative_url }}">{{ p.title }}</a></li>
+    {% endfor %}
+    </ul>
+  {% endfor %}
+  </div>
+</article>

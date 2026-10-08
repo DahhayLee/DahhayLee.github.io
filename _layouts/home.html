@@ -1,0 +1,19 @@
+---
+layout: default
+---
+{% for post in site.posts %}
+<article class="entry">
+  <h2 class="date">{{ post.date | date: "%B %-d, %Y" | upcase }}</h2>
+  <h3 class="entry-title"><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
+  <div class="body">
+    {% if post.link %}
+      {% if post.description %}<p>{{ post.description }}</p>{% endif %}
+      <p class="more"><a href="{{ post.link | relative_url }}">풀러 가기</a></p>
+    {% else %}
+      {% assign ex = post.excerpt | strip_html | normalize_whitespace | truncatewords: 60 %}
+      {% if ex != "" %}<p>{{ ex }}</p>{% endif %}
+      <p class="more"><a href="{{ post.url | relative_url }}">continue reading</a></p>
+    {% endif %}
+  </div>
+</article>
+{% endfor %}

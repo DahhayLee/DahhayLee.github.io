@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{% if page.title and page.layout != "home" %}{{ page.title }} · {% endif %}{{ site.title }}</title>
+<meta name="description" content="{{ page.description | default: site.description | strip_html | normalize_whitespace | escape }}">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&family=Nanum+Gothic+Coding:wght@400;700&family=IBM+Plex+Sans:wght@400;600&display=swap">
+<link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
+{% feed_meta %}
+</head>
+<body>
+<div class="wrap">
+
+<header class="masthead">
+  <div class="brand">
+    {% if site.author.avatar %}<a href="{{ '/' | relative_url }}"><img class="avatar" src="{{ site.author.avatar | relative_url }}" alt=""></a>{% endif %}
+    <a class="wordmark" href="{{ '/' | relative_url }}">{{ site.title | downcase }}</a>
+  </div>
+
+  {% assign pubs = site.data.publications %}
+  {% if pubs and pubs.size > 0 %}
+    {% assign maxy = pubs | map: "year" | sort | last %}
+    {% assign cutoff = site.time | date: "%Y" | plus: 0 | minus: 1 %}
+    {% if maxy >= cutoff %}
+      {% for p in pubs %}{% if p.year == maxy %}{% assign latest = p %}{% break %}{% endif %}{% endfor %}
+      {% if latest.doi %}{% assign latest_link = "https://doi.org/" | append: latest.doi %}{% else %}{% assign latest_link = latest.url %}{% endif %}
+  <p class="latest"><a href="{{ latest_link }}"><em>{{ latest.short_title | default: latest.title | split: ": " | first }}</em></a> out now in {{ latest.journal }}</p>
+    {% endif %}
+  {% endif %}
+
+  <nav class="main-nav" aria-label="Main">
+    {% for item in site.data.navigation.main %}<a href="{{ item.url | relative_url }}">{{ item.title }}</a>
+    {% endfor %}
+  </nav>
+</header>
+
+<div class="columns">
+  <main class="content">
+{{ content }}
+  </main>
+
+  <aside class="sidebar">
+    <section>
+      <h2>SEARCH</h2>
+      <form action="https://www.google.com/search" method="get">
+        <label for="q">Search this site:</label>
+        <div class="search-row">
+          <input id="q" type="search" name="q">
+          <input type="hidden" name="as_sitesearch" value="{{ site.url | remove: 'https://' | remove: 'http://' }}">
+          <button type="submit">Search</button>
+        </div>
+      </form>
+    </section>
+
+    <section>
+      <h2>ELSEWHERE</h2>
+      {% for l in site.elsewhere %}{% if l.url != "" %}<a href="{% if l.url contains ':' %}{{ l.url }}{% else %}{{ l.url | relative_url }}{% endif %}">{{ l.label }}</a>
+      {% endif %}{% endfor %}
+    </section>
+
+    {% if site.posts.size > 0 %}
+    <section>
+      <h2>ARCHIVES</h2>
+      {% assign months = site.posts | group_by_exp: "p", "p.date | date: '%Y-%m'" %}
+      {% for m in months %}<a href="{{ '/posts/' | relative_url }}#{{ m.name }}">{{ m.items.first.date | date: "%B %Y" }}</a>
+      {% endfor %}
+    </section>
+    {% endif %}
+  </aside>
+</div>
+
+<footer class="site-footer">by {{ site.author.name }}</footer>
+
+</div>
+</body>
+</html>
