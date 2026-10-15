@@ -22,7 +22,7 @@ plugins:
 author:
   name: "Dahhay Lee"
   avatar: "/assets/images/profilepic.jpg"   # 헤더 사진. 바꾸려면 assets/images 에 올리고 경로 수정
-  bio: "PhD candidate, Yonsei University · Survival analysis & Bayesian"
+  bio: "PhD candidate, Yonsei University · Survival analysis & Bayesian statistics"
   location: "Seoul, Korea"
 
 # 사이드바 ELSEWHERE 링크. url 이 빈 항목은 표시되지 않아요.
