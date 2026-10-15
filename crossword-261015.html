@@ -47,16 +47,18 @@ permalink: /crossword-261015.html
 .xw #ans{position:absolute;opacity:0;border:0;padding:0;margin:0;font-size:16px;background:transparent;
   color:transparent;caret-color:transparent;pointer-events:none;outline:none}
 
-.xw .xw-bar{margin-top:14px;max-width:360px;display:flex;align-items:stretch;background:var(--xw-panel)}
+
+/* 문제 바: 문제 목록이 판 아래로 내려가는 좁은 화면(폰 등)에서만 보여요 */
+.xw .xw-layout{container-type:inline-size}
+.xw .xw-bar{display:none;margin-top:14px;max-width:360px;align-items:stretch;background:var(--xw-panel)}
+@container (max-width: 639px){ .xw .xw-bar{display:flex} }
 .xw .xw-bar button{border:0;background:transparent;color:var(--xw-link);font-family:var(--mono);
   font-size:22px;width:40px;cursor:pointer;flex:none}
 .xw .xw-bar button:hover{background:var(--xw-word)}
 .xw .cluetext{flex:1;padding:10px 4px;font-size:15px;line-height:1.5;min-height:3.4em;display:flex;align-items:center}
 .xw .cluetext b{white-space:nowrap;margin-right:10px;color:var(--xw-muted)}
 .xw .cluetext span{flex:1;text-align:left}
-.xw .hint{font-family:var(--sans);font-size:13px;line-height:1.5;color:var(--xw-muted);margin:8px 0 0;max-width:360px}
-
-.xw .actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px;max-width:360px}
+.xw .actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px;max-width:360px}
 .xw .actions button,.xw .share button{height:34px;padding:0 14px;border:1px solid var(--xw-link);
   background:transparent;color:var(--xw-link);font-family:var(--sans);font-size:14px;font-weight:600;
   cursor:pointer;border-radius:0}
@@ -102,10 +104,9 @@ permalink: /crossword-261015.html
 
         <div class="xw-bar">
           <button id="prev" aria-label="이전 문제">‹</button>
-          <div class="cluetext" id="cluetext" aria-live="polite"></div>
+          <div class="cluetext" id="cluetext"></div>
           <button id="next" aria-label="다음 문제">›</button>
         </div>
-        <p class="hint">칸을 누르고 바로 입력하세요. 한 글자를 넣으면 다음 칸으로, 한 단어를 다 채우면 다음 문제로 넘어가요. 같은 칸을 한 번 더 누르면 가로/세로가 바뀝니다.</p>
 
         <div class="actions">
           <button id="check">맞는지 확인</button>
@@ -331,10 +332,15 @@ permalink: /crossword-261015.html
     ans.style.left = sc.offsetLeft+"px"; ans.style.top = sc.offsetTop+"px";
     ans.style.width = sc.offsetWidth+"px"; ans.style.height = sc.offsetHeight+"px";
 
-    $("cluetext").innerHTML = "";
-    const b = document.createElement("b"); b.textContent = (w.d==="across"?"가로 ":"세로 ")+w.n;
-    const t = document.createElement("span"); t.textContent = w.t;
-    $("cluetext").append(b,t);
+    // 스크린리더용: 지금 문제를 판의 이름으로 알려 줌
+    board.setAttribute("aria-label", "십자말풀이 판, " + (w.d==="across"?"가로 ":"세로 ") + w.n + ": " + w.t);
+    const ct = $("cluetext");
+    if(ct){
+      ct.innerHTML = "";
+      const b = document.createElement("b"); b.textContent = (w.d==="across"?"가로 ":"세로 ")+w.n;
+      const t = document.createElement("span"); t.textContent = w.t;
+      ct.append(b,t);
+    }
     document.querySelectorAll(".clues li").forEach(li => {
       const ww = ORDER.find(x=>x.d+x.n===li.dataset.key);
       li.classList.toggle("active", ww===w);
@@ -436,6 +442,7 @@ permalink: /crossword-261015.html
   });
 
   for(const [id,step] of [["prev",-1],["next",1]]){
+    if(!$(id)) continue;
     $(id).addEventListener("mousedown", e => e.preventDefault());
     $(id).addEventListener("click", () => { const f = commit(); cycle(step); if(f) keepFocus(); });
   }
