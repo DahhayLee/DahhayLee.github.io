@@ -27,4 +27,4 @@ What I am working on now:
 This site collects my publications, talks, and occasional notes on
 methods I find myself explaining more than once.
 
-P.S. When I'm not wrangling survival curves, I'm usually solving crosswords, or making them. I'm an enthusiastic crossword solver and maker, and this site is home to my own puzzles. Head over to [homemade crosswords] (/crossword/) to try them out. (Fair warning: they're Korean mini crosswords!)
+P.S. When I'm not wrangling survival curves, I'm usually solving crosswords, or making them. I'm an enthusiastic crossword solver and maker, and this site is home to my own puzzles. Head over to [homemade crosswords](/crossword/) to try them out. (Fair warning: they're Korean mini crosswords!)
