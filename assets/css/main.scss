@@ -13,6 +13,7 @@
   --rule: #d6d4ce;
   --mono: "Courier Prime", "Nanum Gothic Coding", "Courier New", monospace;
   --sans: "IBM Plex Sans", "Nanum Gothic Coding", sans-serif;
+  --serif: Georgia, "Noto Serif KR", "Nanum Myeongjo", serif;
 }
 
 * { box-sizing: border-box; }
@@ -21,10 +22,10 @@ body {
   margin: 0;
   background: var(--bg);
   color: var(--ink);
-  font-family: var(--mono);
+  font-family: var(--serif);
   font-size: 17px;
-  line-height: 1.6;
-  letter-spacing: 0.02em;
+  line-height: 1.7;
+  letter-spacing: normal;
 }
 a { color: var(--link); text-underline-offset: 3px; }
 a:hover { color: var(--ink); }
@@ -40,7 +41,7 @@ img { max-width: 100%; height: auto; }
 }
 
 /* 헤더 */
-.masthead { display: flex; flex-direction: column; gap: 1.25rem; }
+.masthead { display: flex; flex-direction: column; gap: 1.25rem; font-family: var(--mono); letter-spacing: 0.02em; }
 .brand { display: flex; flex-wrap: wrap; align-items: flex-end; gap: 1.25rem; }
 .avatar { display: block; width: 96px; height: 120px; object-fit: cover; }
 .wordmark {
