@@ -11,7 +11,7 @@ I've spent more than a decade at the National Cancer Center (NCC) in Korea, whic
 
 Some time after I started at NCC, I came across a tweet that stuck with me. It said, roughly, that the first thing doctors tell you after a cancer diagnosis is: "Don't go online and look up survival rates or any other statistics."
 
-That blew my mind. We statisticians work our butts off to produce those numbers and make them as useful and informative as we can, and the advice patients get is to never look at them? Something has gone seriously wrong. The numbers patients find online are often years out of date, averaged over people who look nothing like them, and presented as if they were certain.
+That blew my mind. We statisticians work our butts off to produce those numbers and make them as useful and informative as we can, and the advice patients get is to never look at them? Something has gone seriously wrong. But honestly, I can see where the distrust comes from. The numbers patients find online are often years out of date, averaged over people who look nothing like them, and presented as if they were certain.
 
 Ever since, my research has centered on one question: how do we make survival analysis reliable, useful, and trustworthy for patients, doctors, and the public? To me, that means two things. Survival statistics have to stay up to date, and their uncertainty has to be addressed honestly.
 
