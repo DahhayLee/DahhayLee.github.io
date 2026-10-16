@@ -13,7 +13,7 @@
   --rule: #d6d4ce;
   --mono: "Courier Prime", "Nanum Gothic Coding", "Courier New", monospace;
   --sans: "IBM Plex Sans", "Nanum Gothic Coding", sans-serif;
-  --serif: "PT Serif", "Noto Serif KR", "Nanum Myeongjo", serif;
+  --serif: "Libre Baskerville", "Noto Serif KR", "Nanum Myeongjo", serif;
 }
 
 * { box-sizing: border-box; }
@@ -23,7 +23,7 @@ body {
   background: var(--bg);
   color: var(--ink);
   font-family: var(--serif);
-  font-size: 17px;
+  font-size: 16px;
   line-height: 1.7;
   letter-spacing: normal;
 }
