@@ -6,13 +6,9 @@ layout: default
   <div class="body">
 {{ content }}
   {% assign entries = site.posts | where_exp: "p", "p.link == nil" %}
-  {% assign months = entries | group_by_exp: "p", "p.date | date: '%Y-%m'" %}
-  {% for m in months %}
-    <h2 id="{{ m.name }}">{{ m.items.first.date | date: "%B %Y" }}</h2>
     <ul class="post-list">
-    {% for p in m.items %}<li><span class="d">{{ p.date | date: "%m.%d" }}</span> <a href="{{ p.link | default: p.url | relative_url }}">{{ p.title }}</a></li>
+    {% for p in entries %}<li><span class="d">{{ p.date | date: "%Y. %m. %d" }}</span> <a href="{{ p.link | default: p.url | relative_url }}">{{ p.title }}</a></li>
     {% endfor %}
     </ul>
-  {% endfor %}
   </div>
 </article>
