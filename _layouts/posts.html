@@ -5,7 +5,8 @@ layout: default
   <h1 class="page-title">{{ page.title }}</h1>
   <div class="body">
 {{ content }}
-  {% assign months = site.posts | group_by_exp: "p", "p.date | date: '%Y-%m'" %}
+  {% assign entries = site.posts | where_exp: "p", "p.link == nil" %}
+  {% assign months = entries | group_by_exp: "p", "p.date | date: '%Y-%m'" %}
   {% for m in months %}
     <h2 id="{{ m.name }}">{{ m.items.first.date | date: "%B %Y" }}</h2>
     <ul class="post-list">
