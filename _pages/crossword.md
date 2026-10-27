@@ -1,5 +1,5 @@
 ---
-title: "십자말풀이"
+title: "The Mini Crossword"
 permalink: /crossword/
 ---
 
