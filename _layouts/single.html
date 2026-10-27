@@ -3,7 +3,7 @@ layout: default
 ---
 <article class="entry">
   {% if page.collection == "posts" %}
-  <h2 class="date">{{ page.date | date: "%B %-d, %Y" | upcase }}</h2>
+  <h2 class="date">{{ page.date | date: "%B %-d, %Y" }}</h2>
   <h1 class="entry-title">{{ page.title }}</h1>
   {% else %}
   <h1 class="page-title">{{ page.title }}</h1>
